@@ -53,3 +53,18 @@ void aru::problem6()
 
 	std::cout << '\n';
 }
+
+void aru::problem7()
+{
+	std::pair p = {1,2.5};
+
+	int key;
+	double value;
+	unpack(key, value) = p;
+
+	std::cout
+		<< "Ejercicio 7:\n"
+		<< "Key: " << key << '\n'
+		<< "Value: " << value << '\n'
+	;
+}

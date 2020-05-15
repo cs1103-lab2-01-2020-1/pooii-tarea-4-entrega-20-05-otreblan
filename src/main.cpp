@@ -20,6 +20,7 @@ int main()
 {
 	aru::problem5();
 	aru::problem6();
+	aru::problem7();
 
 	return 0;
 }

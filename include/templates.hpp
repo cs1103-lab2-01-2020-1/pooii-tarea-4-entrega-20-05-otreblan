@@ -61,4 +61,23 @@ T rotate_range(T container, int rot)
 
 	return result;
 }
+
+template <typename T, typename T2>
+struct unpack
+{
+	T& value1;
+	T2& value2;
+
+	unpack(T& value1, T2& value2):
+		value1(value1),
+		value2(value2)
+	{};
+
+	void operator=(std::pair<T, T2> pack)
+	{
+		value1 = pack.first;
+		value2 = pack.second;
+	}
+};
+
 }
