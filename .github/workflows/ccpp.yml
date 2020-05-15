@@ -16,5 +16,5 @@ jobs:
     - name: build
       run: mkdir -p build;
         cd build;
-        cmake ..;
+        CXX=g++-9 cmake ..;
         make -j$(nproc)
