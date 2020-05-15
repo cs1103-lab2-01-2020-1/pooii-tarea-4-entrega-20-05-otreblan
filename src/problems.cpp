@@ -36,3 +36,20 @@ void aru::problem5()
 
 	std::cout << '\n';
 }
+
+void aru::problem6()
+{
+	std::vector<int> vec = {1,2,3,4,5,6};
+
+	vec = aru::rotate_range(vec, -7);
+
+
+	std::cout << "Ejercicio 6:\n";
+
+	for(auto& i: vec)
+	{
+		std::cout << i << '\n';
+	}
+
+	std::cout << '\n';
+}
