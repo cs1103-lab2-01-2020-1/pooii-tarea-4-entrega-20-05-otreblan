@@ -14,12 +14,31 @@
 // You should have received a copy of the GNU General Public License
 // along with tarea-4.  If not, see <http://www.gnu.org/licenses/>.
 
-#include <problems.hpp>
+#pragma once
 
-int main()
+#include <set>
+#include <iterator>
+
+namespace aru
 {
-	aru::problem5();
+template <typename T>
+T delete_duplicated(T container)
+{
+	using value_t = typename std::iterator_traits<typename T::iterator>::value_type ;
 
-	return 0;
+	T result;
+
+	std::set<value_t> values;
+
+	for(const auto& i: container)
+	{
+		if(values.find(i) == values.end()) // Not repeated
+		{
+			values.insert(i);
+			result.push_back(i);
+		}
+	}
+
+	return result;
 }
-
+}

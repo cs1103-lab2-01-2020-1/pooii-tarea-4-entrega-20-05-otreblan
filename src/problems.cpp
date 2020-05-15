@@ -14,12 +14,25 @@
 // You should have received a copy of the GNU General Public License
 // along with tarea-4.  If not, see <http://www.gnu.org/licenses/>.
 
+#include <iostream>
+#include <vector>
+
 #include <problems.hpp>
+#include <templates.hpp>
 
-int main()
+void aru::problem5()
 {
-	aru::problem5();
+	std::vector<int> vec = {1,2,4,2,2,3,4,2,2,2};
 
-	return 0;
+	vec = aru::delete_duplicated(vec);
+
+
+	std::cout << "Ejercicio 5:\n";
+
+	for(auto& i: vec)
+	{
+		std::cout << i << '\n';
+	}
+
+	std::cout << '\n';
 }
-
