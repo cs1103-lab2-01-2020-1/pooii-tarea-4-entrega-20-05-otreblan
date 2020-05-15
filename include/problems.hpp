@@ -14,12 +14,20 @@
 // You should have received a copy of the GNU General Public License
 // along with tarea-4.  If not, see <http://www.gnu.org/licenses/>.
 
-#include <problems.hpp>
+#pragma once
 
-int main()
+namespace aru
 {
-	aru::problem5();
 
-	return 0;
+void problem5();
+void problem6();
+void problem7();
+void problem8();
+void problem9();
+void problem10();
+void problem11();
+void problem12();
+void problem13();
+void problem14();
+
 }
-
