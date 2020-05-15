@@ -41,4 +41,24 @@ T delete_duplicated(T container)
 
 	return result;
 }
+
+template <typename T>
+T rotate_range(T container, int rot)
+{
+	T result;
+	int size = container.size();
+	int limited_rot = -rot % size;
+	limited_rot = limited_rot < 0 ? limited_rot+size: limited_rot;
+
+	if(limited_rot == 0)
+		return container;
+
+	auto middle_it = std::begin(container);
+	std::advance(middle_it, limited_rot);
+
+	result.insert(std::end(result), middle_it, std::end(container));
+	result.insert(std::end(result), std::begin(container), middle_it);
+
+	return result;
+}
 }
