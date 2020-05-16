@@ -16,6 +16,7 @@
 
 #include <iostream>
 #include <vector>
+#include <list>
 
 #include <problems.hpp>
 #include <templates.hpp>
@@ -88,4 +89,23 @@ void aru::problem8()
 		<< "Value3: " << value3 << '\n'
 		<< '\n'
 	;
+}
+
+void aru::problem9()
+{
+	// Esto no compila con clang
+	auto vec = generar_contenedor(1,2,3,4);
+
+	std::cout << "Ejercicio 9\n";
+	for(auto i: vec)
+	{
+		std::cout << i << '\n';
+	}
+
+	auto li = generar_contenedor<std::list>(10000000,2,3,4,10);
+
+	for(auto i: li)
+	{
+		std::cout << i << '\n';
+	}
 }

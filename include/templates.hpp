@@ -20,7 +20,8 @@
 #include <iterator>
 #include <tuple>
 #include <iostream>
-#include <typeinfo>
+#include <vector>
+#include <cstdarg>
 
 namespace aru
 {
@@ -123,5 +124,11 @@ struct unpack_pair
 		value2 = pair.second;
 	}
 };
+
+template <template <typename> class container = std::vector, typename ...Ts>
+container<typename std::tuple_element<0, std::tuple<Ts...>>::type> generar_contenedor(const Ts&... values)
+{
+	return {values...};
+}
 
 }
