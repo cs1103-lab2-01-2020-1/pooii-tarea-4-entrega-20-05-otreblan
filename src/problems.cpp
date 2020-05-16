@@ -199,3 +199,12 @@ void aru::problem13()
 		<< '\n'
 	;
 }
+
+void aru::problem14()
+{
+	std::cout
+		<< "Ejercicio 14:\n"
+		<< sum_product(1,2,3,4,5,6)
+		<< '\n'
+	;
+}
