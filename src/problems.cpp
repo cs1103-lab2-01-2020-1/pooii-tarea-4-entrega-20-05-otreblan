@@ -61,7 +61,7 @@ void aru::problem7()
 
 	int key;
 	double value;
-	unpack_pair(key, value) = p;
+	unpack(key, value) = p;
 
 	std::cout
 		<< "Ejercicio 7:\n"
@@ -96,7 +96,7 @@ void aru::problem9()
 	// Esto no compila con clang
 	auto vec = generar_contenedor(1,2,3,4);
 
-	std::cout << "Ejercicio 9\n";
+	std::cout << "Ejercicio 9:\n";
 	for(auto i: vec)
 	{
 		std::cout << i << '\n';
@@ -108,4 +108,21 @@ void aru::problem9()
 	{
 		std::cout << i << '\n';
 	}
+
+	std::cout <<  '\n';
+}
+
+void aru::problem10()
+{
+	std::vector vec1 = {1};
+	std::vector vec2 = {2,2,3};
+	std::vector vec3 = {2,2,3,3,4};
+	std::vector vec4 = {2,2};
+
+	std::cout << "Ejercicio 10:\n";
+	std::cout
+		<< min_size(vec4, vec2, vec3) << '\n'
+		<< min_size(vec1, vec2) << '\n'
+		<< min_size(vec3) << '\n'
+	;
 }

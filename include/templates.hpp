@@ -22,6 +22,7 @@
 #include <iostream>
 #include <vector>
 #include <cstdarg>
+#include <algorithm>
 
 namespace aru
 {
@@ -85,6 +86,13 @@ struct unpack: unpack<Ts...>
 		value = std::get<index>(pack);
 		parent::operator=(pack);
 	}
+
+	template<typename T2>
+	constexpr void operator=(const std::pair<T, T2>& data)
+	{
+		value = data.first;
+		parent::value = data.second;
+	}
 };
 
 
@@ -106,29 +114,21 @@ struct unpack<T>
 	}
 };
 
-template <typename T, typename T2>
-struct unpack_pair
-{
-	T& value1;
-	T2& value2;
-
-	constexpr
-	unpack_pair(T& value1, T2& value2):
-		value1(value1),
-		value2(value2)
-	{};
-
-	constexpr void operator=(const std::pair<T, T2>& pair)
-	{
-		value1 = pair.first;
-		value2 = pair.second;
-	}
-};
-
 template <template <typename> class container = std::vector, typename ...Ts>
 container<typename std::tuple_element<0, std::tuple<Ts...>>::type> generar_contenedor(const Ts&... values)
 {
 	return {values...};
+}
+
+template <typename ...Ts>
+size_t min_size(const Ts&... containers)
+{
+	size_t result = SIZE_MAX;
+	for(const auto& i: {containers...})
+	{
+		result = std::min(result, i.size());
+	}
+	return result;
 }
 
 }
