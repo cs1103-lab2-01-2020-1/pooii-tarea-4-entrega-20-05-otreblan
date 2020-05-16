@@ -21,6 +21,7 @@ int main()
 	aru::problem5();
 	aru::problem6();
 	aru::problem7();
+	aru::problem8();
 
 	return 0;
 }

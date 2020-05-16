@@ -60,11 +60,32 @@ void aru::problem7()
 
 	int key;
 	double value;
-	unpack(key, value) = p;
+	unpack_pair(key, value) = p;
 
 	std::cout
 		<< "Ejercicio 7:\n"
 		<< "Key: " << key << '\n'
 		<< "Value: " << value << '\n'
+		<< '\n'
+	;
+}
+
+void aru::problem8()
+{
+	std::tuple p = {1,2.5,4,(long)100};
+
+	int key;
+	double value;
+	int value2;
+	long value3;
+	unpack(key, value, value2, value3) = p;
+
+	std::cout
+		<< "Ejercicio 8:\n"
+		<< "Key: " << key << '\n'
+		<< "Value: " << value << '\n'
+		<< "Value2: " << value2 << '\n'
+		<< "Value3: " << value3 << '\n'
+		<< '\n'
 	;
 }

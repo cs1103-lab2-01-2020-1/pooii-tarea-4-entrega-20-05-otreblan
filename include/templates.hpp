@@ -18,6 +18,9 @@
 
 #include <set>
 #include <iterator>
+#include <tuple>
+#include <iostream>
+#include <typeinfo>
 
 namespace aru
 {
@@ -62,21 +65,62 @@ T rotate_range(T container, int rot)
 	return result;
 }
 
+template <typename T, typename... Ts>
+struct unpack: unpack<Ts...>
+{
+	using parent = unpack<Ts...>;
+	T& value;
+
+	constexpr
+	unpack(T& value, Ts&... values):
+		parent(values...),
+		value(value)
+	{};
+
+	template<typename... T2s>
+	constexpr void operator=(const std::tuple<T2s...>& pack)
+	{
+		constexpr int index = sizeof...(T2s)-sizeof...(Ts)-1;
+		value = std::get<index>(pack);
+		parent::operator=(pack);
+	}
+};
+
+
+template <typename T>
+struct unpack<T>
+{
+	T& value;
+
+	constexpr
+	unpack(T& value):
+		value(value)
+	{};
+
+	template<typename... T2s>
+	constexpr void operator=(const std::tuple<T2s...>& pack)
+	{
+		constexpr int index = sizeof...(T2s)-1;
+		value = std::get<index>(pack);
+	}
+};
+
 template <typename T, typename T2>
-struct unpack
+struct unpack_pair
 {
 	T& value1;
 	T2& value2;
 
-	unpack(T& value1, T2& value2):
+	constexpr
+	unpack_pair(T& value1, T2& value2):
 		value1(value1),
 		value2(value2)
 	{};
 
-	void operator=(std::pair<T, T2> pack)
+	constexpr void operator=(const std::pair<T, T2>& pair)
 	{
-		value1 = pack.first;
-		value2 = pack.second;
+		value1 = pair.first;
+		value2 = pair.second;
 	}
 };
 
