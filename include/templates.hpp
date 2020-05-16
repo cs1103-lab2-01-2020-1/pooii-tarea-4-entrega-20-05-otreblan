@@ -223,5 +223,21 @@ bool binary_search(iT begin, iT end, const T& value)
 	}
 }
 
+template <typename ...Ts>
+typename std::tuple_element<0, std::tuple<Ts...>>::type sum_product(const Ts&... values)
+{
+	using T = typename std::tuple_element<0, std::tuple<Ts...>>::type;
+
+	T even_pro = 1, odd_pro = 1;
+
+	for(const T i: {values...})
+	{
+		if(i % 2 == 0)
+			even_pro *= i;
+		else
+			odd_pro *= i;
+	}
+	return even_pro + odd_pro;
+}
 
 }
