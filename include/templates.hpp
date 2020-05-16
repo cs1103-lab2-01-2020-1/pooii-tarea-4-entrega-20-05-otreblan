@@ -162,6 +162,41 @@ constexpr container<std::vector<typename std::tuple_element<0, std::tuple<Ts...>
 }
 
 template <typename T, typename iT = std::iterator<std::random_access_iterator_tag, T>>
+bool binary_search_iter(iT begin, iT end, const T& value)
+{
+	auto dist = std::distance(begin, end);
+	iT begin2 = begin, end2 = end;
+
+	iT middle;
+	while(true)
+	{
+		if(dist == 1)
+		{
+			return *begin == value;
+		}
+		else
+		{
+			dist = std::distance(begin2, end2);
+			middle = begin2;
+			std::advance(middle, dist/2);
+
+			if(*middle == value)
+			{
+				return true;
+			}
+			else if(*middle < value)
+			{
+				begin2 = middle;
+			}
+			else
+			{
+				end2 = middle;
+			}
+		}
+	}
+}
+
+template <typename T, typename iT = std::iterator<std::random_access_iterator_tag, T>>
 bool binary_search(iT begin, iT end, const T& value)
 {
 	auto dist = std::distance(begin, end);
