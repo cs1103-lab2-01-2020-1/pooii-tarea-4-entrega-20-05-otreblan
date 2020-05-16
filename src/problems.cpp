@@ -61,7 +61,7 @@ void aru::problem7()
 
 	int key;
 	double value;
-	unpack_pair(key, value) = p;
+	unpack(key, value) = p;
 
 	std::cout
 		<< "Ejercicio 7:\n"
