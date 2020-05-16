@@ -147,3 +147,29 @@ void aru::problem11()
 		std::cout << "\n\n";
 	}
 }
+
+void aru::problem12()
+{
+	std::vector vec = {1,2,3,4,5,6,8,9,10,11};
+	std::cout
+		<< "Ejercicio 12:\n";
+	for(auto i: vec)
+	{
+		std::cout
+			<< std::boolalpha << aru::binary_search(vec.begin(), vec.end(), i)
+			<< '\n'
+		;
+	}
+
+	bool fail = aru::binary_search(vec.begin(), vec.end(), 7);
+	bool fail2 = aru::binary_search(vec.begin(), vec.end(), -1000);
+	bool fail3 = aru::binary_search(vec.begin(), vec.end(), 1000000);
+
+	std::cout
+		<< std::boolalpha
+		<< fail << '\n'
+		<< fail2 << '\n'
+		<< fail3 << '\n'
+		<< '\n'
+	;
+}
