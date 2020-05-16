@@ -124,5 +124,26 @@ void aru::problem10()
 		<< min_size(vec4, vec2, vec3) << '\n'
 		<< min_size(vec1, vec2) << '\n'
 		<< min_size(vec3) << '\n'
+		<< '\n'
 	;
+}
+
+void aru::problem11()
+{
+	std::list vec1 = {2,2,3};
+	std::list vec2 = {2,3,4};
+	std::list vec3 = {10,20,30,40};
+
+
+	std::cout << "Ejercicio 11:\n";
+	auto vec_vec = zip(vec1, vec2, vec3);
+
+	for(const auto& i: vec_vec)
+	{
+		for(const auto& j: i)
+		{
+			std::cout << j << ' ';
+		}
+		std::cout << "\n\n";
+	}
 }

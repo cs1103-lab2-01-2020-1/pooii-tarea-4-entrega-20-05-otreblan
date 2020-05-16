@@ -131,4 +131,35 @@ size_t min_size(const Ts&... containers)
 	return result;
 }
 
+template <template <typename> class container, typename ...Ts>
+constexpr container<std::vector<typename std::tuple_element<0, std::tuple<Ts...>>::type>> zip(const container<Ts>&... containers)
+{
+	using data_t = typename std::tuple_element<0, std::tuple<Ts...>>::type;
+	using vec_t  = std::vector<data_t>;
+
+	size_t min_size = SIZE_MAX;
+	for(const auto& i: {containers...})
+	{
+		min_size = std::min(min_size, i.size());
+	}
+
+	container<vec_t> result(min_size);
+
+	for(const auto& i: {containers...})
+	{
+		size_t next_index = 0;
+		auto it = result.begin();
+		for(const auto& j: i)
+		{
+			it->push_back(j);
+			it++;
+			if(++next_index >= min_size)
+				break;
+		}
+	}
+
+	return result;
+}
+
+
 }
