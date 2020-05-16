@@ -22,6 +22,7 @@
 #include <iostream>
 #include <vector>
 #include <cstdarg>
+#include <algorithm>
 
 namespace aru
 {
@@ -117,6 +118,17 @@ template <template <typename> class container = std::vector, typename ...Ts>
 container<typename std::tuple_element<0, std::tuple<Ts...>>::type> generar_contenedor(const Ts&... values)
 {
 	return {values...};
+}
+
+template <typename ...Ts>
+size_t min_size(const Ts&... containers)
+{
+	size_t result = SIZE_MAX;
+	for(const auto& i: {containers...})
+	{
+		result = std::min(result, i.size());
+	}
+	return result;
 }
 
 }
