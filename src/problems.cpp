@@ -148,11 +148,11 @@ void aru::problem11()
 	}
 }
 
-void aru::problem12()
+void aru::problem13()
 {
 	std::vector vec = {1,2,3,4,5,6,8,9,10,11};
 	std::cout
-		<< "Ejercicio 12:\n";
+		<< "Ejercicio 13:\n";
 	for(auto i: vec)
 	{
 		std::cout
