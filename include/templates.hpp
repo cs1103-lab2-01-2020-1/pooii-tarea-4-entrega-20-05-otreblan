@@ -114,7 +114,7 @@ struct unpack<T>
 	}
 };
 
-template <template <typename> class container = std::vector, typename ...Ts>
+template <template <typename...> class container = std::vector, typename ...Ts>
 container<typename std::tuple_element<0, std::tuple<Ts...>>::type> generar_contenedor(const Ts&... values)
 {
 	return {values...};
@@ -131,7 +131,7 @@ size_t min_size(const Ts&... containers)
 	return result;
 }
 
-template <template <typename> class container, typename ...Ts>
+template <template <typename...> class container, typename ...Ts>
 constexpr container<std::vector<typename std::tuple_element<0, std::tuple<Ts...>>::type>> zip(const container<Ts>&... containers)
 {
 	using data_t = typename std::tuple_element<0, std::tuple<Ts...>>::type;
